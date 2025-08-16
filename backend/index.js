@@ -11,13 +11,13 @@ app.use(express.json());
 // Routes
 app.use('/api/webside/enquiry', enquiryRoutes);
 
-mongoose.connect(process.env.MONGODB_URI)
-  .then(() => {
-    console.log('Connected to MongoDB successfully');
-    app.listen(process.env.PORT || 8000, () => {
-      console.log(`Server is running on port ${process.env.PORT || 8000}`);
-    });
-  })
-  .catch(err => {
-    console.error('Error connecting to MongoDB:', err);
-  });
+mongoose.connect(process.env.MONGODB_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
+.then(() => console.log("MongoDB connected"))
+.catch((err) => console.log("Error connecting to MongoDB:", err));
+
+// Port bind for Render
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
