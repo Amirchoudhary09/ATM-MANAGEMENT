@@ -33,6 +33,7 @@ getAllEnquiries = async (req, res) => {
     }
 };
 
+
 // Delete enquiry by ID
 deleteEnquiry = async (req, res) => {
     try {
